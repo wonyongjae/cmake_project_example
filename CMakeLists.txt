@@ -5,6 +5,11 @@ set(PROJECT_NAME cmake_project_example)
 # set c++ version
 set(CMAKE_CXX_STANDARD 17)
 
+# 1. create window by GLFW
+set(WINDOW_NAME "Hello, OpenGL!")
+set(WINDOW_WIDTH 960)
+set(WINDOW_HEIGHT 540)
+
 # select project
 project(${PROJECT_NAME})
 # select execute file path
@@ -25,6 +30,13 @@ include(Dependency.cmake)
 target_include_directories(${PROJECT_NAME} PUBLIC ${DEP_INCLUDE_DIR})
 target_link_directories(${PROJECT_NAME} PUBLIC ${DEP_LIB_DIR})
 target_link_libraries(${PROJECT_NAME} PUBLIC ${DEP_LIBS})
+
+# 2. create window by GLFW
+target_compile_definitions(${PROJECT_NAME} PUBLIC
+    WINDOW_NAME="${WINDOW_NAME}"
+    WINDOW_WIDTH=${WINDOW_WIDTH}
+    WINDOW_HEIGHT=${WINDOW_HEIGHT}
+    )
 
 # Dependency들이 먼저 build 될 수 있게 관계 설정
 add_dependencies(${PROJECT_NAME} ${DEP_LIST})
