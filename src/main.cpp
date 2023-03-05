@@ -1,7 +1,7 @@
-#include <iostream>
+#include <spdlog/spdlog.h>
 
-int main()
+int main(int argc, const char** argv)
 {
-    std::cout << "hello, world" << "\n";
+    SPDLOG_INFO("hello, world");
     return 0;
 }
