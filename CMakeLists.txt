@@ -6,15 +6,22 @@ set(PROJECT_NAME cmake_project_example)
 set(CMAKE_CXX_STANDARD 17)
 
 # 1. create window by GLFW
-set(WINDOW_NAME "Hello, OpenGL!")
+set(WINDOW_NAME "CMake Project Example")
 set(WINDOW_WIDTH 960)
 set(WINDOW_HEIGHT 540)
 
 # select project
 project(${PROJECT_NAME})
 # select execute file path
-add_executable(${PROJECT_NAME} src/main.cpp)
-
+add_executable(${PROJECT_NAME} 
+    src/main.cpp
+    src/common.cpp src/common.h
+    src/shader.cpp src/shader.h
+    src/program.cpp src/program.h
+    src/context.cpp src/context.h
+    src/buffer.cpp src/buffer.h
+    src/vertex_layout.cpp src/vertex_layout.h
+    )
 # build & compile
 # 1. cmake -Bbuild . -DCMAKE_BUILD_TYPE=[Debug|Release]
 # 2. cmake --build build --config Debug
